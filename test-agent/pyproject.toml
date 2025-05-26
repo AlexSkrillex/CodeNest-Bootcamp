@@ -1,0 +1,12 @@
+[project]
+name = "test-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "load-dotenv>=0.1.0",
+    "openai-agents>=0.0.16",
+    "python-dotenv>=1.1.0",
+    "pyttsx3>=2.98",
+]
