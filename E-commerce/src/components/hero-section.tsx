@@ -6,13 +6,39 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ShoppingBag, TrendingUp, Award, Clock, RotateCcw } from "lucide-react"
 
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  originalPrice: number;
+  image: string;
+  category: string;
+  tags: string[];
+}
+
 export default function HeroSection() {
-  // Animation for the hero text
   const [isVisible, setIsVisible] = useState(false)
+  const [data, setData] = useState<Product[]>([])
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://127.0.0.1:8000/")
+        const responseData = await res.json()
+        setData(responseData.products || [])
+        console.log("✅ Result", responseData)
+      } catch (error) {
+        console.error("❌ Error fetching data:", error)
+      }
+    }
+    fetchData()
+  }, [])
+
+  const product1 = data[0]
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 overflow-hidden">
@@ -93,7 +119,7 @@ export default function HeroSection() {
           >
             <div className="relative h-[400px] w-[400px] md:h-[500px] md:w-[500px]">
               <Image
-                src="/placeholder.svg?height=500&width=500"
+                src={product1.image}
                 alt="Smart Watch"
                 fill
                 className="object-contain"

@@ -93,8 +93,7 @@ const tailwindConfig = {
         },
       },
     },
-    plugins: [require("tailwindcss-animate")], // This is a Tailwind plugin
+    plugins: [], // Removed tailwindcss-animate plugin since it's not installed
   }; // If you use 'satisfies Config', add it here: } satisfies Config;
   
   export default tailwindConfig;
-  

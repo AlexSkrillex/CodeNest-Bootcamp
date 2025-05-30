@@ -1,7 +1,7 @@
 import HeroSection from "@/components/hero-section"
 import FeaturedProducts from "@/components/featured-products"
 import BestSellingProducts from "@/components/best-selling-products"
-
+import Image from "next/image"
 export default function Home() {
   return (
     <div className="flex flex-col w-full">
